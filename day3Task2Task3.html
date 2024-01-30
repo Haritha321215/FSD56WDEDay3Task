@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Day3 Task2 and Task3</title>
+</head>
+<body>
+ <script>
+
+  var request = new XMLHttpRequest();
+  // Open a connection with the server
+  request.open("GET", "https://restcountries.com/v3.1/all");
+  // Send the request
+  request.send();
+  request.onload = function(){
+    var data = JSON.parse(request.response);
+    console.log("===Country flags=========================================================");
+    for(var i=0; i<data.length; i++){
+      console.log(`${data[i].name.common} Country's Flag: ${data[i].flag}`);
+    } 
+    console.log("==Countryname -- region -- sub-region -- population===================================================================")
+    for(var i=0; i<data.length; i++){
+      console.log(`${data[i].name.common} -- ${data[i].subregion} -- ${data[i].region} -- ${data[i].population}`);
+           
+    }   
+  }
+ </script> 
+</body>
+</html>
